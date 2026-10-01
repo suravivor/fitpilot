@@ -46,6 +46,7 @@ const en: Dictionary = {
   carbs: "Carbs",
   fat: "Fat",
   remaining: "remaining",
+  overTarget: "over target",
   of: "of",
   logMeal: "Log meal",
   logWeight: "Log weight",

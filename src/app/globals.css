@@ -2,44 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * FitPilot palette — chosen for a daily-use coaching app, not a generic
+ * SaaS dashboard:
+ *  - a pale sage "paper" background instead of white or cream (health /
+ *    growth without tipping into either of the two most common AI-generated
+ *    defaults)
+ *  - each macro gets its OWN color used consistently everywhere (badges,
+ *    bars, numbers) so color carries meaning at a glance, not just the one
+ *    recycled accent blue every value used to share
+ *  - flat surfaces with a hairline border instead of the identical
+ *    rounded-card-plus-soft-shadow treatment — calmer, more "steady coach",
+ *    less "bouncy product demo"
+ */
 :root {
-  --color-bg: #f7f8fa;
+  --color-bg: #f1f6f2;
   --color-surface: #ffffff;
-  --color-border: #e6e8ec;
-  --color-text: #15181d;
-  --color-muted: #6b7280;
-  --color-accent: #2f6fed;
-  --color-accent-strong: #1e4fc4;
-  --color-good: #1a9e6b;
-  --color-warn: #c9821a;
+  --color-border: #dce6df;
+  --color-text: #12231b;
+  --color-muted: #5b6b61;
+  --color-accent: #ff5a36;
+  --color-accent-strong: #e2461f;
+
+  --color-protein: #22734f;
+  --color-carbs: #e2992b;
+  --color-fat: #7c5cd4;
+  --color-calories: #ff5a36;
+
+  --color-good: #22734f;
+  --color-warn: #e2992b;
   --color-bad: #d23c3c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #0f1115;
-    --color-surface: #181b21;
-    --color-border: #262a33;
-    --color-text: #f2f3f5;
-    --color-muted: #9aa1ac;
-    --color-accent: #5c8dff;
-    --color-accent-strong: #7fa3ff;
-    --color-good: #35c88e;
-    --color-warn: #e0a83e;
+    --color-bg: #0e1713;
+    --color-surface: #172420;
+    --color-border: #28392f;
+    --color-text: #eef4ef;
+    --color-muted: #9bb0a2;
+    --color-accent: #ff7a5c;
+    --color-accent-strong: #ff9579;
+
+    --color-protein: #4cae82;
+    --color-carbs: #f0b85c;
+    --color-fat: #a58cec;
+    --color-calories: #ff7a5c;
+
+    --color-good: #4cae82;
+    --color-warn: #f0b85c;
     --color-bad: #ea5c5c;
   }
 }
 
 :root[data-theme="dark"] {
-  --color-bg: #0f1115;
-  --color-surface: #181b21;
-  --color-border: #262a33;
-  --color-text: #f2f3f5;
-  --color-muted: #9aa1ac;
-  --color-accent: #5c8dff;
-  --color-accent-strong: #7fa3ff;
-  --color-good: #35c88e;
-  --color-warn: #e0a83e;
+  --color-bg: #0e1713;
+  --color-surface: #172420;
+  --color-border: #28392f;
+  --color-text: #eef4ef;
+  --color-muted: #9bb0a2;
+  --color-accent: #ff7a5c;
+  --color-accent-strong: #ff9579;
+
+  --color-protein: #4cae82;
+  --color-carbs: #f0b85c;
+  --color-fat: #a58cec;
+  --color-calories: #ff7a5c;
+
+  --color-good: #4cae82;
+  --color-warn: #f0b85c;
   --color-bad: #ea5c5c;
 }
 
@@ -50,4 +81,12 @@ body {
 
 * {
   border-color: var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

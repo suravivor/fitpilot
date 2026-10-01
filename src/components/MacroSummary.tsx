@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { StatBar } from "./Card";
+import { StatBar, CalorieRing } from "./Card";
 import type { Dictionary } from "@/i18n/he";
 
 interface Totals {
@@ -43,16 +43,25 @@ export default function MacroSummary({
   const caloriesForPct = Math.max(totals.calories, 1);
 
   return (
-    <div className="space-y-3">
-      <StatBar label={t.calories} consumed={totals.calories} target={target?.calories_kcal ?? 0} unit="" />
-      <StatBar label={t.protein} consumed={totals.protein} target={target?.protein_g ?? 0} unit="g" />
+    <div className="space-y-4">
+      <CalorieRing
+        consumed={totals.calories}
+        target={target?.calories_kcal ?? 0}
+        label={t.calories}
+        remainingLabel={totals.calories > (target?.calories_kcal ?? 0) ? t.overTarget : t.remaining}
+        unit=""
+      />
 
-      {showAll && (
-        <>
-          <StatBar label={t.carbs} consumed={totals.carbs} target={target?.carbs_g ?? 0} unit="g" />
-          <StatBar label={t.fat} consumed={totals.fat} target={target?.fat_g ?? 0} unit="g" />
-        </>
-      )}
+      <div className="space-y-3">
+        <StatBar label={t.protein} consumed={totals.protein} target={target?.protein_g ?? 0} unit="g" metric="protein" />
+
+        {showAll && (
+          <>
+            <StatBar label={t.carbs} consumed={totals.carbs} target={target?.carbs_g ?? 0} unit="g" metric="carbs" />
+            <StatBar label={t.fat} consumed={totals.fat} target={target?.fat_g ?? 0} unit="g" metric="fat" />
+          </>
+        )}
+      </div>
 
       {trackingDepth === "minimal" && (
         <button onClick={() => setExpanded((e) => !e)} className="text-xs text-accent font-medium">
@@ -71,3 +80,4 @@ export default function MacroSummary({
     </div>
   );
 }
+

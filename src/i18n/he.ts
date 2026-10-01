@@ -48,6 +48,7 @@ const he = {
   carbs: "פחמימות",
   fat: "שומן",
   remaining: "נותרו",
+  overTarget: "מעבר למטרה",
   of: "מתוך",
   logMeal: "רשום ארוחה",
   logWeight: "רשום משקל",
