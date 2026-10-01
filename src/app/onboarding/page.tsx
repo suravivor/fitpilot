@@ -147,8 +147,18 @@ export default function OnboardingPage() {
                   <input
                     type="number"
                     inputMode="numeric"
+                    step="1"
+                    min="1"
                     value={age}
-                    onChange={(e) => setAge(e.target.value)}
+                    onChange={(e) => {
+                      // Age must be a whole number — the server rejects a
+                      // decimal (e.g. "42.5") with a raw validation error.
+                      // Stripping non-digits here means that error can never
+                      // happen, instead of surfacing an ugly message after
+                      // the fact.
+                      const digitsOnly = e.target.value.replace(/[^\d]/g, "");
+                      setAge(digitsOnly);
+                    }}
                     className="w-full rounded-lg border px-3 py-2 bg-bg"
                   />
                 </div>
