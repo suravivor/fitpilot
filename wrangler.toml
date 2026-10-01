@@ -7,7 +7,7 @@ pages_build_output_dir = ".vercel/output/static"
 [[d1_databases]]
 binding = "DB"
 database_name = "fitpilot_db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "6902d8a0-e1ad-4d10-9f59-409f35ac8868"
 
 # Cloudflare Workers AI binding (free tier, used for the AI Coach)
 [ai]
